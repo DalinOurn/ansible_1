@@ -1,3 +1,5 @@
-
+[web_servers]
 server2@192.168.11.11 apache_package=apache2 php_package=libapache2-mod-php
-server3@192.168.11.13 apache_package=apache2 php_package=libapache2-mod-php
+
+[db_servers]
+server3@192.168.11.13

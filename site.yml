@@ -1,0 +1,39 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+
+  - name: install updates (Ubuntu)
+    tags: always
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: web_servers
+  become: true
+  tasks:
+
+  - name: install apache2 and php packages
+    tags: apache,apache2,ubuntu
+    package:
+      name:
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
+      state: latest
+#      update_cache: yes
+#    when: ansible_distribution == "Ubuntu"
+
+- hosts: db_servers
+  become: true
+  tasks: 
+
+  - name: install mariadb-server
+    tags: db,mariadb,ubuntu
+    apt:
+      name: mariadb-server 
+      state: latest
+   # when: ansible_distribution == "Ubuntu"
+ 
