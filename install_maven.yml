@@ -1,0 +1,27 @@
+---
+
+- hosts: all
+#  name: unarchive maven tar.gz
+  become: true
+ # vars:
+  #  mvurl: "https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz"
+   
+  tasks:
+    - name: extract maven 
+      ansible.builtin.yum:
+        name:
+          - unzip
+          - tar
+        state: latest
+        
+    - name: extract archive
+      ansible.builtin.unarchive:
+        src: "https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz"
+        dest: "/opt/"
+        remote_src: yes
+        validate_certs: yes
+
+
+#    - name: Update path for maven use
+#      shell: export PATH=/opt/apache-maven-3.8.6/bin:$PATH
+  

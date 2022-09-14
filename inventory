@@ -1,8 +1,28 @@
-[web_servers]
+
+#[web_servers]
+[Apache]
+server3@192.168.11.13 apache_package=apache2 php_package=libapache2-mod-php
 server2@192.168.11.11 apache_package=apache2 php_package=libapache2-mod-php
 
 [db_servers]
-server3@192.168.11.13
+server2@192.168.11.11
 
 [workstations]
+server3@192.168.11.13
+
+#jenkins install 
+[Java]
+server4@192.168.11.14
+
+#maven install
+[Maven_Group]
+server3@192.168.11.13
 server2@192.168.11.11
+
+[Tomcat]
+server2@192.168.11.11
+[Tomcat3]
+serverr5@192.168.11.15
+[docker]
+serverr5@192.168.11.15
+

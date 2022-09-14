@@ -1,0 +1,11 @@
+---
+
+- hosts: Simone
+  become: yes
+  tasks: 
+
+  - name: create simone user
+    tags: always
+    user:
+      name: simone
+      groups: root

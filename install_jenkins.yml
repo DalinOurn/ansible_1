@@ -1,0 +1,35 @@
+---
+
+- hosts: Java
+
+  become: true
+  tasks:
+  
+  - name: jenkins repos key
+    apt_key: url=https://pkg.jenkins.io/debian-stable/jenkins.io.key state=present
+ 
+
+  - name: add jenkins repos
+    apt_repository: repo='deb https://pkg.jenkins.io/debian-stable binary/' state=present
+
+  - name: update
+    apt:
+      update_cache: yes
+      state: latest
+
+  - name: install java
+    apt:
+      name: openjdk-11-jdk
+      state: present
+
+
+  - name: ensure jenkins installed
+    apt: 
+      name: jenkins
+      state: latest
+
+  - name: ensure jenkins is running
+    service:
+      name: jenkins
+      state: started
+
